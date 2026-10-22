@@ -1,0 +1,145 @@
+@import "tailwindcss";
+
+/* ── Lenis smooth scroll ─────────────────────────────────────────────── */
+html.lenis,
+html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: hidden; }
+.lenis.lenis-smooth iframe { pointer-events: none; }
+
+@theme {
+  --color-surface-container-high: #292a2a;
+  --color-on-secondary-container: #ffd7d4;
+  --color-on-primary: #313030;
+  --color-on-tertiary: #690003;
+  --color-tertiary-fixed-dim: #ffb4aa;
+  --color-tertiary: #ff1e1e;
+  --color-tertiary-container: #140000;
+  --color-error: #ffb4ab;
+  --color-on-background: #ffffff;
+  --color-surface-dim: #050505;
+  --color-on-primary-fixed-variant: #474646;
+  --color-on-surface-variant: #888888;
+  --color-on-tertiary-fixed: #410001;
+  --color-on-secondary: #ffffff;
+  --color-on-secondary-fixed: #410004;
+  --color-primary: #ffffff;
+  --color-on-primary-container: #797777;
+  --color-on-tertiary-fixed-variant: #930006;
+  --color-background: #050505;
+  --color-surface-container-low: #0a0a0a;
+  --color-inverse-surface: #e3e2e2;
+  --color-on-surface: #ffffff;
+  --color-inverse-primary: #5f5e5e;
+  --color-on-error-container: #ffdad6;
+  --color-surface-container-highest: #1a1a1a;
+  --color-on-error: #690005;
+  --color-outline: rgba(255, 255, 255, 0.15);
+  --color-outline-variant: rgba(255, 255, 255, 0.05);
+  --color-surface: #050505;
+  --color-inverse-on-surface: #303031;
+  --color-on-primary-fixed: #1c1b1b;
+  --color-on-secondary-fixed-variant: #ff1e1e;
+  --color-primary-fixed-dim: #c9c6c5;
+  --color-tertiary-fixed: #ffdad5;
+  --color-primary-fixed: #e5e2e1;
+  --color-surface-bright: #383939;
+  --color-primary-container: #050505;
+  --color-surface-container-lowest: #000000;
+  --color-secondary-container: #d31027;
+  --color-secondary-fixed: #ffdad7;
+  --color-secondary-fixed-dim: #ffb3ae;
+  --color-on-tertiary-container: #ef0713;
+  --color-surface-variant: #111111;
+  --color-surface-tint: #c9c6c5;
+  --color-surface-container: #111111;
+  --color-secondary: #d31027;
+  --color-error-container: #93000a;
+
+  --font-label-caps: 'Inter', sans-serif;
+  --font-display-hero-mobile: 'Anton', sans-serif;
+  --font-headline-md: 'Anton', sans-serif;
+  --font-mono-metadata: 'Inter', sans-serif;
+  --font-display-hero: 'Anton', sans-serif;
+  --font-headline-lg-mobile: 'Anton', sans-serif;
+  --font-body-md: 'Inter', sans-serif;
+  --font-body-lg: 'Inter', sans-serif;
+  --font-headline-lg: 'Anton', sans-serif;
+
+  --spacing-margin-edge-mobile: 20px;
+  --spacing-gutter: 24px;
+  --spacing-container-max: 1440px;
+  --spacing-margin-edge: 64px;
+  --spacing-section-gap: 160px;
+  --spacing-unit: 8px;
+}
+
+@utility text-label-caps {
+  font-family: var(--font-label-caps);
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+@utility text-display-hero-mobile {
+  font-family: var(--font-display-hero-mobile);
+  font-size: 80px;
+  line-height: 76px;
+  letter-spacing: -0.01em;
+}
+@utility text-headline-md {
+  font-family: var(--font-headline-md);
+  font-size: 40px;
+  line-height: 44px;
+}
+@utility text-mono-metadata {
+  font-family: var(--font-mono-metadata);
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: normal;
+  text-transform: none;
+}
+@utility text-display-hero {
+  font-family: var(--font-display-hero);
+  font-size: 180px;
+  line-height: 160px;
+  letter-spacing: -0.02em;
+}
+@utility text-headline-lg-mobile {
+  font-family: var(--font-headline-lg-mobile);
+  font-size: 48px;
+  line-height: 48px;
+}
+@utility text-body-md {
+  font-family: var(--font-body-md);
+  font-size: 16px;
+  line-height: 24px;
+}
+@utility text-body-lg {
+  font-family: var(--font-body-lg);
+  font-size: 20px;
+  line-height: 32px;
+}
+@utility text-headline-lg {
+  font-family: var(--font-headline-lg);
+  font-size: 80px;
+  line-height: 80px;
+}
+
+@layer base {
+  html { scroll-behavior: auto; /* gsap ScrollTrigger needs native scroll */ }
+  body { 
+    overscroll-behavior: none; 
+    min-height: max(884px, 100dvh); 
+  }
+  .pb-safe { padding-bottom: env(safe-area-inset-bottom); }
+  .pt-safe { padding-top: env(safe-area-inset-top); }
+}
+
+@keyframes scroll-down {
+  0% { transform: translateY(-100%); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateY(200%); opacity: 0; }
+}
